@@ -45,7 +45,7 @@
         <EditText
             android:layout_width="300dp"
             android:layout_height="wrap_content"
-            android:inputType="text"
+            android:inputType="textPassword"
             android:hint="Password"
             android:textColorHint="#f75520"
             android:layout_gravity="center"
