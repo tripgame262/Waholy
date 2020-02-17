@@ -18,7 +18,7 @@
             android:layout_width="250dp"
             android:layout_height="300dp"
             android:layout_gravity="center"
-            android:layout_marginTop="-80dp"
+            android:layout_marginTop="-100dp"
             android:layout_marginLeft="-5dp"
             android:src="@mipmap/org"></ImageView>
         <TextView

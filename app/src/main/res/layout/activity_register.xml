@@ -18,7 +18,7 @@
             android:layout_width="250dp"
             android:layout_height="300dp"
             android:layout_gravity="center"
-            android:layout_marginTop="-80dp"
+            android:layout_marginTop="-100dp"
             android:layout_marginLeft="-5dp"
             android:src="@mipmap/org"></ImageView>
         <TextView
@@ -28,21 +28,35 @@
             android:textColor="#f75520"
             android:textSize="30dp"
             android:layout_gravity="center"
-            android:layout_marginTop="-90dp"
+            android:layout_marginTop="-110dp"
             android:textStyle="bold"></TextView>
+
+        <EditText
+            android:id="@+id/edit_regis_name"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/edit"
+            android:drawableLeft="@drawable/ic_person"
+            android:drawablePadding="10dp"
+            android:hint="Fullname"
+            android:inputType="text"
+            android:padding="15dp"
+            android:textColorHint="#f75520"></EditText>
 
         <EditText
             android:id="@+id/edit_regis_email"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="10dp"
             android:background="@drawable/edit"
-            android:drawableLeft="@drawable/ic_person"
+            android:drawableLeft="@drawable/ic_email"
             android:drawablePadding="10dp"
             android:hint="Email"
             android:inputType="text"
-            android:padding="17dp"
+            android:padding="15dp"
             android:textColorHint="#f75520"></EditText>
 
         <EditText
@@ -50,12 +64,25 @@
             android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="10dp"
             android:background="@drawable/edit"
             android:drawableLeft="@drawable/ic_lock"
             android:drawablePadding="10dp"
             android:hint="Password"
             android:inputType="textPassword"
+            android:padding="15dp"
+            android:textColorHint="#f75520"></EditText>
+        <EditText
+            android:id="@+id/edit_regis_phone"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/edit"
+            android:drawableLeft="@drawable/ic_phone"
+            android:drawablePadding="10dp"
+            android:hint="Tel"
+            android:inputType="textPhonetic"
             android:padding="15dp"
             android:textColorHint="#f75520"></EditText>
 
@@ -76,7 +103,7 @@
             android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginTop="25dp"
+            android:layout_marginTop="15dp"
             android:background="@drawable/button"
             android:text="Register"
             android:textColor="#fff"></Button>

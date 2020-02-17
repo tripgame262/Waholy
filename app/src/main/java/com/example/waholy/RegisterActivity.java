@@ -16,13 +16,21 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthUserCollisionException;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.regex.Pattern;
 
 public class RegisterActivity extends AppCompatActivity implements View.OnClickListener{
 
-    EditText editTextEmail,editTextPass;
+    EditText editTextEmail,editTextPass,editTextName,editTextPhone;
     private FirebaseAuth mAuth;
+    private FirebaseDatabase database;
+    private DatabaseReference mDatabase;
+    private static final String USER = "user";
+    private static final String TAG = "RegisterActivity";
+    private User user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,13 +38,19 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         setContentView(R.layout.activity_register);
         editTextEmail = (EditText) findViewById(R.id.edit_regis_email);
         editTextPass = (EditText) findViewById(R.id.edit_regis_pass);
+        editTextName = (EditText) findViewById(R.id.edit_regis_name);
+        editTextPhone = (EditText) findViewById(R.id.edit_regis_phone);
         findViewById(R.id.Rbtn_regis).setOnClickListener(this);
         findViewById(R.id.have_id).setOnClickListener(this);
         mAuth = FirebaseAuth.getInstance();
+        database = FirebaseDatabase.getInstance();
+        mDatabase = database.getReference(USER);
     }
     public void registerUser(){
         String email = editTextEmail.getText().toString().trim();
         String password = editTextPass.getText().toString().trim();
+        String fullname = editTextName.getText().toString().trim();
+        String phone = editTextPhone.getText().toString().trim();
         if(email.isEmpty()){
             editTextEmail.setError("Email is required");
             editTextEmail.requestFocus();
@@ -57,14 +71,15 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
             editTextPass.requestFocus();
             return;
         }
+        user = new User(email,password,fullname,phone);
         mAuth.createUserWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if(task.isSuccessful()){
                     Toast.makeText(RegisterActivity.this, "User Register Sucessfull", Toast.LENGTH_SHORT).show();
-                    Intent i = new Intent(RegisterActivity.this,LoginActivity.class);
-                    i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                    startActivity(i);
+                    FirebaseUser user = mAuth.getCurrentUser();
+                    UpdateUI(user);
+
                 }else{
                     if(task.getException() instanceof FirebaseAuthUserCollisionException){
                         Toast.makeText(RegisterActivity.this, "You are already register ", Toast.LENGTH_SHORT).show();
@@ -84,5 +99,11 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
                 break;
         }
 
+    }
+    public void UpdateUI(FirebaseUser currentUser){
+        String keyID = mDatabase.push().getKey();
+        mDatabase.child(keyID).setValue(user);
+        Intent i = new Intent(RegisterActivity.this,LoginActivity.class);
+        startActivity(i);
     }
 }
