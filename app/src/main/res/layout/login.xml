@@ -38,7 +38,7 @@
         android:layout_width="104dp"
         android:layout_height="40dp"
         android:layout_marginTop="376dp"
-        android:text="Password :"
+        android:text="Password : Test"
         android:textColor="#FFFFFF"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
