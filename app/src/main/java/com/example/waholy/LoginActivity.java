@@ -10,15 +10,25 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.AuthResult;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseAuthUserCollisionException;
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.HashMap;
+import java.util.Map;
+
 
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
     EditText editTextEmail,editTextPass;
-    private FirebaseAuth mAuth;
+    private static String URL_LOGIN = "http://192.168.100.126/mobile/login.php";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,19 +37,13 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         editTextPass = (EditText) findViewById(R.id.edit_login_pass);
         findViewById(R.id.Lbtn_regis).setOnClickListener(this);
         findViewById(R.id.Lbtn_login).setOnClickListener(this);
-        mAuth = FirebaseAuth.getInstance();
     }
     public void userLogin(){
-        String email = editTextEmail.getText().toString().trim();
-        String password = editTextPass.getText().toString().trim();
+        final String email = editTextEmail.getText().toString().trim();
+        final String password = editTextPass.getText().toString().trim();
         if(email.isEmpty()){
             editTextEmail.setError("Email is required");
             editTextEmail.requestFocus();
-            return;
-        }
-        if(password.length()<6){
-            editTextPass.setError("Password lenght more than 6");
-            editTextPass.requestFocus();
             return;
         }
         if(!Patterns.EMAIL_ADDRESS.matcher(email).matches()){
@@ -52,18 +56,48 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             editTextPass.requestFocus();
             return;
         }
-        mAuth.signInWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, URL_LOGIN,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        try {
+                            JSONObject jsonObject = new JSONObject(response);
+                            String success = jsonObject.getString("success");
+                            JSONArray jsonArray = jsonObject.getJSONArray("login");
+                            if(success.equals("1")){
+                                for (int i=0;i<jsonArray.length();i++){
+                                    JSONObject object = jsonArray.getJSONObject(i);
+                                    String name = object.getString("name").trim();
+                                    String email = object.getString("email").trim();
+                                    Intent board = new Intent(LoginActivity.this,BoardActivity.class);
+                                    startActivity(board);
+                                }
+                            }
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                            Toast.makeText(LoginActivity.this, "Error!"+e.toString(), Toast.LENGTH_SHORT).show();
+                        }
+
+
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Toast.makeText(LoginActivity.this, "Error!"+error.toString(), Toast.LENGTH_SHORT).show();
+                    }
+                })
+        {
             @Override
-            public void onComplete(@NonNull Task<AuthResult> task) {
-                if(task.isSuccessful()){
-                    Intent i = new Intent(LoginActivity.this,ProfileActivity.class);
-                    i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                    startActivity(i);
-                }else{
-                    Toast.makeText(LoginActivity.this, task.getException().getMessage(), Toast.LENGTH_SHORT).show();
-                }
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String,String> params = new HashMap<>();
+                params.put("email",email);
+                params.put("password",password);
+                return params;
             }
-        });
+        };
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
+        requestQueue.add(stringRequest);
     }
     @Override
     public void onClick(View v) {
