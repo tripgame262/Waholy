@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "1082574485373",
+    "firebase_url": "https://waholy-af832.firebaseio.com",
+    "project_id": "waholy-af832",
+    "storage_bucket": "waholy-af832.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1082574485373:android:aa256ab3538ec9c6e23e14",
+        "android_client_info": {
+          "package_name": "com.example.waholy"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1082574485373-4tja7v7si82qcviappudi4i7fule6b5e.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.waholy",
+            "certificate_hash": "973b94c6ccd8bd965cfae07d0d20547e5e0c15f7"
+          }
+        },
+        {
+          "client_id": "1082574485373-pu3spg2mqtgir67p1gsrnvvmh4ruuurt.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDPMAJRDTLk8BQEaOVUC633OUMKA4YxFlM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1082574485373-pu3spg2mqtgir67p1gsrnvvmh4ruuurt.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
