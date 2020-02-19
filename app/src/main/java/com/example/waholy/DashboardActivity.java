@@ -4,13 +4,13 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
-public class BoardActivity extends AppCompatActivity {
+public class DashboardActivity extends AppCompatActivity {
 
     SessionManager sessionManager;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_board);
+        setContentView(R.layout.activity_dashboard);
         sessionManager = new SessionManager(this);
         sessionManager.checkLogin();
     }

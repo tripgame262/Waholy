@@ -29,6 +29,7 @@ import java.util.Map;
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
     EditText editTextEmail,editTextPass;
     private static String URL_LOGIN = "http://192.168.100.126/mobile/login.php";
+    SessionManager sessionManager;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,6 +38,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         editTextPass = (EditText) findViewById(R.id.edit_login_pass);
         findViewById(R.id.Lbtn_regis).setOnClickListener(this);
         findViewById(R.id.Lbtn_login).setOnClickListener(this);
+        sessionManager = new SessionManager(this);
     }
     public void userLogin(){
         final String email = editTextEmail.getText().toString().trim();
@@ -69,6 +71,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                                     JSONObject object = jsonArray.getJSONObject(i);
                                     String name = object.getString("name").trim();
                                     String email = object.getString("email").trim();
+                                    sessionManager.createSession(name,email);
                                     Intent board = new Intent(LoginActivity.this,BoardActivity.class);
                                     startActivity(board);
                                 }

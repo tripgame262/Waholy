@@ -12,6 +12,7 @@ public class MainActivity extends AppCompatActivity {
     Handler handler;
     Runnable runnable;
     ImageView img;
+    SessionManager sessionManager;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
-                Intent i = new Intent(MainActivity.this,LoginActivity.class);
+                Intent i = new Intent(MainActivity.this,DashboardActivity.class);
                 startActivity(i);
                 finish();
             }
