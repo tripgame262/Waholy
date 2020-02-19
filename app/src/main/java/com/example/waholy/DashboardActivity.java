@@ -25,8 +25,6 @@ public class DashboardActivity extends AppCompatActivity {
                 switch (item.getItemId()){
                     case  R.id.nav_home:
                         return true;
-                    case R.id.nav_logout:
-                        sessionManager.logout();
                 }
                 return false;
             }
