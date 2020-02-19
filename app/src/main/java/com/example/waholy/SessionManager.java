@@ -36,7 +36,7 @@ public class SessionManager {
         if(!this.isLogin()){
             Intent i = new Intent(context,LoginActivity.class);
             context.startActivity(i);
-            ((BoardActivity) context).finish();
+            ((DashboardActivity) context).finish();
         }
     }
     public HashMap<String,String>  getUserDetail(){
@@ -50,6 +50,6 @@ public class SessionManager {
         editor.commit();
         Intent i = new Intent(context,LoginActivity.class);
         context.startActivity(i);
-        ((BoardActivity) context).finish();
+        ((DashboardActivity) context).finish();
     }
 }

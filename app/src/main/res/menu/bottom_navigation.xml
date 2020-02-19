@@ -3,18 +3,17 @@
 
     <item
         android:id="@+id/nav_home"
-        android:enabled="true"
         android:icon="@drawable/ic_home"
-        android:title="Home"/>
+        android:title="Home" />
+
     <item
-        android:id="@+id/nva_noti"
-        android:enabled="true"
+        android:id="@+id/nav_favorites"
         android:icon="@drawable/ic_notifications"
-        android:title="Notification"/>
+        android:title="Favorites" />
+
     <item
-        android:id="@+id/nva_person"
-        android:enabled="true"
-        android:icon="@drawable/ic_per_white"
-        android:title="Me"/>
+        android:id="@+id/nav_logout"
+        android:icon="@drawable/ic_logout"
+        android:title="Logout" />
 
 </menu>

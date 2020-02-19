@@ -72,7 +72,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                                     String name = object.getString("name").trim();
                                     String email = object.getString("email").trim();
                                     sessionManager.createSession(name,email);
-                                    Intent board = new Intent(LoginActivity.this,BoardActivity.class);
+                                    Intent board = new Intent(LoginActivity.this,DashboardActivity.class);
                                     startActivity(board);
                                 }
                             }
