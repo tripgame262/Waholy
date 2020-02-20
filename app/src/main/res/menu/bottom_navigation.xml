@@ -10,12 +10,12 @@
         android:icon="@drawable/ic_message"
         android:title="Messenger"/>
     <item
-        android:id="@+id/nav_notification"
-        android:icon="@drawable/ic_notifications"
-        android:title="Notification"/>
-    <item
         android:id="@+id/nav_person"
         android:icon="@drawable/ic_per_white"
         android:title="Me"/>
+    <item
+        android:id="@+id/nav_logout"
+        android:icon="@drawable/ic_logout"
+        android:title="Logout"/>
 
 </menu>

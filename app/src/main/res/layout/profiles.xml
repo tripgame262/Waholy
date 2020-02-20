@@ -26,11 +26,11 @@
                     android:background="@color/colorPrimary"
                     android:orientation="vertical">
 
-                    <ImageView
+                    <de.hdodenhof.circleimageview.CircleImageView
                         android:layout_width="150dp"
                         android:layout_height="150dp"
                         android:layout_gravity="center_horizontal"
-                        android:layout_marginTop="45dp" />
+                        android:layout_marginTop="45dp"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -238,12 +238,12 @@
                         android:text="Show all comments"
                         android:textStyle="bold" />
                 </LinearLayout>
+
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="100dp"
+                    android:layout_height="80dp"
                     android:layout_marginTop="25dp"
-                    android:orientation="horizontal">
-                </LinearLayout>
+                    android:orientation="horizontal"></LinearLayout>
             </LinearLayout>
         </LinearLayout>
     </ScrollView>
