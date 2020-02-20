@@ -71,7 +71,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                                     JSONObject object = jsonArray.getJSONObject(i);
                                     String name = object.getString("name").trim();
                                     String email = object.getString("email").trim();
-                                    sessionManager.createSession(name,email);
+                                    String id = object.getString("id").trim();
+                                    sessionManager.createSession(name,email,id);
                                     Intent board = new Intent(LoginActivity.this,HomeActivity.class);
                                     startActivity(board);
                                 }

@@ -26,10 +26,10 @@
                     android:background="@color/colorPrimary"
                     android:orientation="vertical">
                     <ImageView
-                        android:id="@+id/profile_edit"
+                        android:id="@+id/profile_save"
                         android:layout_width="24dp"
                         android:layout_height="24dp"
-                        android:src="@drawable/ic_edit"
+                        android:src="@drawable/ic_save"
                         android:layout_gravity="right"
                         android:layout_marginTop="25dp"
                         android:layout_marginRight="20dp"/>
@@ -39,16 +39,17 @@
                         android:layout_width="150dp"
                         android:layout_height="150dp"
                         android:layout_gravity="center_horizontal" />
-                    <TextView
-                        android:id="@+id/profile_name"
+                    <Button
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
-                        android:layout_marginTop="10dp"
-                        android:text=""
+                        style="@style/Widget.AppCompat.ActionButton.CloseMode"
+                        android:layout_gravity="center"
+                        android:text="Edit Photo"
                         android:textColor="#fff"
-                        android:textSize="21sp"
-                        android:textStyle="bold" />
+                        android:textStyle="bold"
+                        android:id="@+id/btn_photo_edit"
+                        android:layout_marginTop="5dp"/>
+
                 </LinearLayout>
 
                 <androidx.cardview.widget.CardView
@@ -141,26 +142,45 @@
                 android:layout_gravity="center"
                 android:layout_marginTop="20dp"
                 android:orientation="vertical">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
 
+                    android:orientation="horizontal"
+                    android:paddingLeft="25dp">
+
+                    <EditText
+                        android:id="@+id/edit_profile_name"
+                        android:layout_width="313dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:background="@drawable/edit"
+                        android:drawableLeft="@drawable/ic_person"
+                        android:drawablePadding="10dp"
+                        android:hint="Name"
+                        android:inputType="text"
+                        android:padding="15dp"
+                        android:textColorHint="#f75520"></EditText>
+                </LinearLayout>
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
-                    android:paddingLeft="25dp">
+                    android:paddingLeft="25dp"
+                    android:layout_marginTop="25dp">
 
-                    <ImageView
-                        android:layout_width="36dp"
-                        android:layout_height="36dp"
-                        android:src="@drawable/ic_email" />
-
-                    <TextView
-                        android:id="@+id/profile_email"
-                        android:layout_width="wrap_content"
+                    <EditText
+                        android:id="@+id/edit_profile_email"
+                        android:layout_width="313dp"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center_vertical"
-                        android:paddingLeft="20dp"
-                        android:text=""
-                        android:textStyle="bold" />
+                        android:layout_gravity="center"
+                        android:background="@drawable/edit"
+                        android:drawableLeft="@drawable/ic_email"
+                        android:drawablePadding="10dp"
+                        android:hint="Email"
+                        android:inputType="text"
+                        android:padding="15dp"
+                        android:textColorHint="#f75520"></EditText>
                 </LinearLayout>
 
                 <LinearLayout
@@ -170,19 +190,18 @@
                     android:orientation="horizontal"
                     android:paddingLeft="25dp">
 
-                    <ImageView
-                        android:layout_width="36dp"
-                        android:layout_height="36dp"
-                        android:src="@drawable/ic_phone_org" />
-
-                    <TextView
-                        android:id="@+id/profile_phone"
-                        android:layout_width="wrap_content"
+                    <EditText
+                        android:id="@+id/edit_profile_phone"
+                        android:layout_width="313dp"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center_vertical"
-                        android:paddingLeft="20dp"
-                        android:text=""
-                        android:textStyle="bold" />
+                        android:layout_gravity="center"
+                        android:background="@drawable/edit"
+                        android:drawableLeft="@drawable/ic_phone_org"
+                        android:drawablePadding="10dp"
+                        android:hint="Phone"
+                        android:inputType="text"
+                        android:padding="15dp"
+                        android:textColorHint="#f75520"></EditText>
                 </LinearLayout>
 
                 <LinearLayout
@@ -192,20 +211,18 @@
                     android:orientation="horizontal"
                     android:paddingLeft="25dp">
 
-                    <ImageView
-                        android:layout_width="36dp"
-                        android:layout_height="36dp"
-                        android:src="@drawable/ic_location_org" />
-
-                    <TextView
-                        android:id="@+id/profile_address"
-
-                        android:layout_width="wrap_content"
+                    <EditText
+                        android:id="@+id/edit_profile_address"
+                        android:layout_width="313dp"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center_vertical"
-                        android:paddingLeft="20dp"
-                        android:text=""
-                        android:textStyle="bold" />
+                        android:layout_gravity="center"
+                        android:background="@drawable/edit"
+                        android:drawableLeft="@drawable/ic_location_org"
+                        android:drawablePadding="10dp"
+                        android:hint="Adress"
+                        android:inputType="text"
+                        android:padding="15dp"
+                        android:textColorHint="#f75520"></EditText>
                 </LinearLayout>
 
                 <LinearLayout
@@ -215,19 +232,18 @@
                     android:orientation="horizontal"
                     android:paddingLeft="25dp">
 
-                    <ImageView
-                        android:layout_width="36dp"
-                        android:layout_height="36dp"
-                        android:src="@drawable/ic_jobs_org" />
-
-                    <TextView
-                        android:id="@+id/profile_job"
-                        android:layout_width="wrap_content"
+                    <EditText
+                        android:id="@+id/edit_profile_job"
+                        android:layout_width="313dp"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center_vertical"
-                        android:paddingLeft="20dp"
-                        android:text=""
-                        android:textStyle="bold" />
+                        android:layout_gravity="center"
+                        android:background="@drawable/edit"
+                        android:drawableLeft="@drawable/ic_jobs_org"
+                        android:drawablePadding="10dp"
+                        android:hint="Job"
+                        android:inputType="text"
+                        android:padding="15dp"
+                        android:textColorHint="#f75520"></EditText>
                 </LinearLayout>
 
 
