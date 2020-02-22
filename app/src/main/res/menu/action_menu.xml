@@ -3,12 +3,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
         android:title="Edit"
-        android:id="@+id/menu_edit_profile"
+        android:id="@+id/newpost"
         android:icon="@drawable/ic_edit"
         app:showAsAction="always"/>
     <item
         android:title="Save"
-        android:id="@+id/menu_save_profile"
+        android:id="@+id/savepost"
         android:icon="@drawable/ic_save"
         app:showAsAction="always"/>
 </menu>

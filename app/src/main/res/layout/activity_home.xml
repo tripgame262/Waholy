@@ -6,11 +6,12 @@
     android:layout_height="match_parent"
     tools:context=".HomeActivity">
 
-    <FrameLayout
-        android:id="@+id/fragment_container"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_above="@id/home" />
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/listPost"
+        android:layout_width="415dp"
+        android:layout_height="631dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/home"
@@ -21,5 +22,7 @@
         android:background="?android:attr/windowBackground"
         app:itemIconSize="30dp"
         app:labelVisibilityMode="unlabeled"/>
+
+
 
 </RelativeLayout>

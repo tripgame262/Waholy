@@ -73,6 +73,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                                     String email = object.getString("email").trim();
                                     String id = object.getString("id").trim();
                                     sessionManager.createSession(name,email,id);
+                                    Toast.makeText(LoginActivity.this, "Hello"+id+""+email, Toast.LENGTH_SHORT).show();
                                     Intent board = new Intent(LoginActivity.this,HomeActivity.class);
                                     startActivity(board);
                                 }

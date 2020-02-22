@@ -5,6 +5,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -48,8 +49,8 @@ public class ProfileActivity extends AppCompatActivity{
     private ImageView imgEdit;
     private SessionManager sessionManager;
     private Menu action;
-    CircleImageView profile_image;
-    String getID;
+    private CircleImageView profile_image;
+    private String getID;
     private Bitmap bitmap;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,6 +60,7 @@ public class ProfileActivity extends AppCompatActivity{
         //Check Session
         sessionManager = new SessionManager(this);
         sessionManager.checkLogin();
+        //getID
         HashMap<String,String> user = sessionManager.getUserDetail();
         getID = user.get(SessionManager.ID);
         //edit profile
