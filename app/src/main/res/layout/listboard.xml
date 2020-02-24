@@ -23,7 +23,6 @@
         android:layout_width="281dp"
         android:layout_height="130dp"
         android:layout_marginLeft="8dp"
-        android:layout_marginTop="3p"
         android:orientation="vertical">
 
         <LinearLayout
