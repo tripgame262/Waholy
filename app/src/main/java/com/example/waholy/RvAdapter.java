@@ -12,6 +12,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
+
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -23,7 +25,7 @@ public class RvAdapter extends RecyclerView.Adapter<RvAdapter.MyViewHolder> {
     RequestOptions options ;
     private Context mContext ;
     private List<Post> mData ;
-
+    private List<String> topic;
 
     public RvAdapter(Context mContext, List lst) {
 
@@ -61,10 +63,7 @@ public class RvAdapter extends RecyclerView.Adapter<RvAdapter.MyViewHolder> {
     }
 
     public static class MyViewHolder extends RecyclerView.ViewHolder {
-
         TextView topic,job,name;
-
-
         public MyViewHolder(View itemView) {
             super(itemView);
             topic = itemView.findViewById(R.id.topic);
@@ -72,6 +71,9 @@ public class RvAdapter extends RecyclerView.Adapter<RvAdapter.MyViewHolder> {
             name = itemView.findViewById(R.id.name);
         }
     }
-
-
+    public void updateList(List<String> newList){
+        topic = new ArrayList<>();
+        topic.addAll(newList);
+        notifyDataSetChanged();
+    }
 }

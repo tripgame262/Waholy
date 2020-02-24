@@ -10,9 +10,14 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
@@ -43,6 +48,9 @@ public class HomeActivity extends AppCompatActivity {
     private RecyclerView listView ;
     private Menu action;
     private static String URL_POST = "https://waholyproj.000webhostapp.com/files/getPost.php";
+    private static String URL_SEARCH = "https://waholyproj.000webhostapp.com/files/search.php";
+    private RvAdapter rvAdapter;
+    EditText Esearch;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,6 +58,9 @@ public class HomeActivity extends AppCompatActivity {
         sessionManager = new SessionManager(this);
         sessionManager.checkLogin();
         listView = (RecyclerView) findViewById(R.id.listPost);
+        //search
+        Esearch = findViewById(R.id.edit_search);
+        //getPost
         getAllPost();
         //bottom
         BottomNavigationView bottomNavigationView = findViewById(R.id.home);
@@ -91,7 +102,52 @@ public class HomeActivity extends AppCompatActivity {
         });
 
     }
+    public void search(){
+        final String search = Esearch.getText().toString().trim();
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, URL_SEARCH,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        try {
+                            JSONObject jsonObject = new JSONObject(response);
+                            String success = jsonObject.getString("success");
+                            JSONArray jsonArray = jsonObject.getJSONArray("post");
+                            if(success.equals("1")){
+                                for(int i=0; i<jsonArray.length();i++){
+                                    JSONObject object = jsonArray.getJSONObject(i);
+                                    Post post = new Post();
+                                    post.setTopic(object.getString("topic"));
+                                    post.setJob(object.getString("job"));
+                                    post.setName(object.getString("name"));
+                                    lstView.add(post);
+                                    Toast.makeText(HomeActivity.this, "Test", Toast.LENGTH_SHORT).show();
+                                }
+                            }
+                        } catch (JSONException e) {
+                            Toast.makeText(HomeActivity.this, "Error.."+e.toString(), Toast.LENGTH_SHORT).show();
+                            e.printStackTrace();
+                        }
 
+
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Toast.makeText(HomeActivity.this, "Error.."+error.toString(), Toast.LENGTH_SHORT).show();
+                    }
+                })
+        {
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                HashMap<String,String> params = new HashMap<>();
+                params.put("search",search);
+                return params;
+            }
+        };
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
+        requestQueue.add(stringRequest);
+    }
     public void getAllPost(){
         StringRequest stringRequest = new StringRequest(URL_POST,
                 new Response.Listener<String>() {
