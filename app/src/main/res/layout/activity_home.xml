@@ -19,7 +19,7 @@
 
             <EditText
 
-                android:id="@+id/editText2"
+                android:id="@+id/edit_search"
                 android:layout_width="360dp"
                 android:layout_height="33dp"
                 android:layout_alignParentTop="true"
@@ -41,7 +41,7 @@
                 android:textColorHint="#708090" />
 
             <Button
-                android:id="@+id/button"
+                android:id="@+id/btn_search"
                 android:layout_width="37dp"
                 android:layout_height="32dp"
                 android:layout_alignParentEnd="true"
