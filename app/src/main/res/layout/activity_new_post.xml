@@ -61,30 +61,40 @@
                 android:id="@+id/edit_details"
                 android:layout_width="371dp"
                 android:layout_height="298dp"
-                android:layout_marginTop="204dp"
+                android:layout_marginTop="128dp"
                 android:background="@drawable/edit"
                 android:ems="10"
                 android:gravity="center"
-                android:hint="รายละเอียด"
+                android:hint="Description."
                 android:inputType="textPersonName"
-                android:textColorHint="#708090"
-                app:layout_constraintBottom_toBottomOf="parent"
+                android:textColorHint="@color/colorMain"
+                android:textSize="24sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.0" />
+                app:layout_constraintTop_toTopOf="parent" />
 
             <EditText
                 android:id="@+id/edit_topic"
-                android:layout_width="371dp"
-                android:layout_height="41dp"
-                android:layout_marginTop="32dp"
+                android:layout_width="305dp"
+                android:layout_height="38dp"
+                android:layout_marginTop="16dp"
                 android:background="@drawable/edit"
                 android:ems="10"
                 android:inputType="textPersonName"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.811"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="84dp"
+                android:layout_height="37dp"
+                android:hint="Title : "
+                android:textColorHint="@color/colorMain"
+                android:textSize="26sp"
+                tools:layout_editor_absoluteX="16dp"
+                tools:layout_editor_absoluteY="16dp" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
