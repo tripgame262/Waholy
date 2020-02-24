@@ -10,6 +10,12 @@
         android:icon="@drawable/ic_message"
         android:title="Messenger"/>
     <item
+        android:id="@+id/nav_Post"
+        android:background="@color/colormain"
+        android:iconsize="50"
+        android:icon="@drawable/ic_edit"
+        android:title="Post" />
+    <item
         android:id="@+id/nav_person"
         android:icon="@drawable/ic_per_white"
         android:title="Me"/>
