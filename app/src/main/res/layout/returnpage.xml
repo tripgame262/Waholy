@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -11,37 +12,32 @@
         <RelativeLayout
             android:id="@+id/b"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:background="@color/colorMain">
 
+            <EditText
 
-            <Button
-                android:id="@+id/button3"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_alignParentStart="true"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentTop="true"
-                android:layout_marginStart="0dp"
-                android:layout_marginLeft="0dp"
-                android:layout_marginTop="0dp"
-                android:background="@color/colorMain"
-                android:drawableLeft="@drawable/ic_chevron_left_black_24dp"
-                android:drawableBottom="@drawable/button"
-                android:text="Back" />
-
-            <Button
-                android:id="@+id/button4"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
+                android:id="@+id/editText2"
+                android:layout_width="390dp"
+                android:layout_height="32dp"
                 android:layout_alignParentTop="true"
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentRight="true"
-                android:layout_marginTop="0dp"
-                android:layout_marginEnd="2dp"
-                android:layout_marginRight="2dp"
-                android:background="@color/colorMain"
-                android:drawableRight="@drawable/ic_more_vert_black_24dp" />
+                android:layout_alignParentBottom="true"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="13dp"
+                android:layout_marginRight="13dp"
+                android:layout_marginBottom="5dp"
+                android:background="@drawable/edit"
+                android:drawableLeft="@android:drawable/ic_menu_search"
+                android:ems="10"
+                android:hint="         Find your job."
+                android:inputType="textPersonName"
+                android:singleLine="false"
+                android:textColorHint="#708090"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                />
+
         </RelativeLayout>
     </LinearLayout>
 

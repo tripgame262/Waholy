@@ -1,26 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <item
-        android:id="@+id/nav_home"
-        android:icon="@drawable/ic_home"
-        android:title="Home"/>
-    <item
-        android:id="@+id/nav_messenger"
-        android:icon="@drawable/ic_message"
-        android:title="Messenger" />
-    <item
-        android:id="@+id/nav_Post"
-        android:background="@color/colorMain"
-        android:icon="@drawable/ic_edit"
-        android:title="Post" />
-    <item
-        android:id="@+id/nav_person"
-        android:icon="@drawable/ic_per_white"
-        android:title="Me"/>
-    <item
-        android:id="@+id/nav_logout"
-        android:icon="@drawable/ic_logout"
-        android:title="Logout"/>
+<item
+    android:id="@+id/nav_home"
+    android:icon="@drawable/ic_home"
+    android:title="Home"/>
+<item
+    android:id="@+id/nav_messenger"
+    android:icon="@drawable/ic_message"
+    android:title="Messenger"/>
+<item
+    android:id="@+id/nav_Post"
+    android:background="@color/colorMain"
+    android:icon="@drawable/ic_edit"
+    android:title="Post" />
+<item
+    android:id="@+id/nav_person"
+    android:icon="@drawable/ic_per_white"
+    android:title="Me"/>
+<item
+    android:id="@+id/nav_logout"
+    android:icon="@drawable/ic_logout"
+    android:title="Logout"/>
 
 </menu>

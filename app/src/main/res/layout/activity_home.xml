@@ -8,14 +8,56 @@
     tools:context=".HomeActivity">
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="43dp"
+        android:orientation="horizontal">
+
+        <RelativeLayout
+            android:id="@+id/b"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/colorMain">
+
+            <EditText
+
+                android:id="@+id/editText2"
+                android:layout_width="390dp"
+                android:layout_height="32dp"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="13dp"
+                android:layout_marginRight="13dp"
+                android:layout_marginBottom="5dp"
+                android:background="@drawable/edit"
+                android:drawableLeft="@android:drawable/ic_menu_search"
+                android:ems="10"
+                android:hint=" Find your job."
+                android:inputType="textPersonName"
+                android:singleLine="false"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                android:textColorHint="#708090"
+                />
+
+
+        </RelativeLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="625dp"
+        android:layout_above="@+id/home"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="47dp"
+        android:layout_marginBottom="3dp"
         android:orientation="vertical">
 
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/listPost"
-            android:layout_width="398dp"
-            android:layout_height="670dp"
+            android:layout_width="400dp"
+            android:layout_height="match_parent"
             android:layout_marginLeft="7dp" />
 
     </LinearLayout>
