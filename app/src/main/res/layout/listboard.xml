@@ -48,12 +48,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="ผู้โพส : " />
-            <TextView
-                android:layout_marginTop="5dp"
-                android:id="@+id/name"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="ผู้โพส : " />
 
         </LinearLayout>
 

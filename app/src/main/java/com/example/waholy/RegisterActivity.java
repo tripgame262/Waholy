@@ -74,9 +74,9 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String,String> params = new HashMap<>();
-                params.put("name",name);
                 params.put("email",email);
                 params.put("password",pass);
+                params.put("name",name);
                 params.put("phone",phone);
                 return params;
             }
