@@ -1,5 +1,6 @@
 package com.example.waholy;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -38,7 +39,7 @@ public class SessionManager {
         if(!this.isLogin()){
             Intent i = new Intent(context,LoginActivity.class);
             context.startActivity(i);
-            ((HomeActivity) context).finish();
+            ((Activity) (context)).finish();
         }
     }
     public HashMap<String,String>  getUserDetail(){

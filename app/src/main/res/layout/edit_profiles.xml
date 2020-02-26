@@ -230,21 +230,7 @@
                     android:layout_height="match_parent"
                     android:layout_marginTop="25dp"
                     android:orientation="horizontal"
-                    android:paddingLeft="25dp">
-
-                    <EditText
-                        android:id="@+id/edit_profile_job"
-                        android:layout_width="313dp"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:background="@drawable/edit"
-                        android:drawableLeft="@drawable/ic_jobs_org"
-                        android:drawablePadding="10dp"
-                        android:hint="Job"
-                        android:inputType="text"
-                        android:padding="15dp"
-                        android:textColorHint="#f75520"></EditText>
-                </LinearLayout>
+                    android:paddingLeft="25dp"/>
 
 
                 <LinearLayout

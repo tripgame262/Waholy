@@ -80,7 +80,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:paddingTop="10dp"
-                                android:text="125"
+                                android:text="-"
                                 android:textColor="@color/colorPrimary"
                                 android:textSize="20sp"
                                 android:textStyle="bold" />
@@ -103,7 +103,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:paddingTop="10dp"
-                                android:text="1205"
+                                android:text="-"
                                 android:textColor="@color/colorPrimary"
                                 android:textSize="20sp"
                                 android:textStyle="bold" />
@@ -126,7 +126,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:paddingTop="10dp"
-                                android:text="360"
+                                android:text="-"
                                 android:textColor="@color/colorPrimary"
                                 android:textSize="20sp"
                                 android:textStyle="bold" />
@@ -213,29 +213,9 @@
                     android:layout_height="match_parent"
                     android:layout_marginTop="25dp"
                     android:orientation="horizontal"
-                    android:paddingLeft="25dp">
-
-                    <ImageView
-                        android:layout_width="36dp"
-                        android:layout_height="36dp"
-                        android:src="@drawable/ic_jobs_org" />
-
-                    <TextView
-                        android:id="@+id/profile_job"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_vertical"
-                        android:paddingLeft="20dp"
-                        android:text=""
-                        android:textStyle="bold" />
-                </LinearLayout>
+                    android:paddingLeft="25dp"/>
 
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:layout_marginTop="25dp"
-                    android:orientation="horizontal"></LinearLayout>
             </LinearLayout>
         </LinearLayout>
     </ScrollView>

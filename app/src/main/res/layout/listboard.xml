@@ -7,9 +7,8 @@
     android:padding="10dp"
     android:orientation="horizontal"
     android:layout_width="match_parent"
-    android:layout_height="150dp"
-    android:layout_marginTop="5dp"
-    >
+    android:layout_height="180dp"
+    android:layout_marginTop="5dp" >
 
     <ImageView
 
@@ -17,18 +16,19 @@
         android:layout_width="100dp"
         android:layout_height="match_parent"
         android:scaleType="centerCrop"
+        android:src="@mipmap/org"
         />
 
     <LinearLayout
         android:layout_width="282dp"
-        android:layout_height="131dp"
+        android:layout_height="157dp"
         android:layout_margin="8dp"
         android:orientation="vertical">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="horizontal">
 
             <TextView
                 android:id="@+id/topic"
@@ -37,28 +37,121 @@
                 android:text="Title"
                 android:textSize="18sp"
                 android:textStyle="bold" />
+
         </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="@color/colorPrimary" />
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="บริษัท : "
+                android:textColor="@color/colorPrimary" />
 
             <TextView
                 android:id="@+id/name"
-                android:layout_marginTop="5dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="ผู้โพส : " />
+                android:layout_marginTop="5dp"
+                android:text="fullname " />
 
         </LinearLayout>
 
-
-        <TextView
-            android:id="@+id/job"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:text="ตำแหน่ง" />
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="แท็ก : "
+                android:textColor="@color/colorPrimary" />
+
+            <TextView
+                android:id="@+id/job"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="fullname " />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="จำนวน (คน) : "
+                android:textColor="@color/colorPrimary" />
+
+            <TextView
+                android:id="@+id/amount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="amout " />
+
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="57dp"
+            android:layout_gravity="right"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btn_detail"
+                android:layout_width="75dp"
+                android:layout_height="29dp"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginStart="156dp"
+                android:layout_marginLeft="156dp"
+                android:layout_marginEnd="51dp"
+                android:layout_marginRight="51dp"
+                android:layout_marginBottom="14dp"
+                android:background="@drawable/btn_apply"
+                android:drawableLeft="@drawable/ic_check_circle_white"
+                android:padding="6dp"
+                android:text="Detail"
+                android:textColor="#fff"
+                android:textSize="12dp"></Button>
+
+            <Button
+                android:id="@+id/btn_fav"
+                android:layout_width="105dp"
+                android:layout_height="29dp"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginStart="41dp"
+                android:layout_marginLeft="41dp"
+                android:layout_marginBottom="14dp"
+                android:background="@drawable/btn_fav"
+                android:drawableLeft="@drawable/ic_favorite_white"
+                android:padding="6dp"
+                android:text="Favorite"
+                android:textColor="#fff"
+                android:textSize="12dp"></Button>
+        </RelativeLayout>
 
     </LinearLayout>
 

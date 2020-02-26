@@ -44,8 +44,8 @@ import java.util.Map;
 import de.hdodenhof.circleimageview.CircleImageView;
 
 public class ProfileActivity extends AppCompatActivity{
-    private static String URL_READ = "https://waholyproj.000webhostapp.com/files/read_detail.php";
-    private TextView Tname,Tphone,Temail,Tjob,Taddress;
+    private static String URL_READ = "http://192.168.100.126/mobile/read_detail.php";
+    private TextView Tname,Tphone,Temail,Taddress;
     private ImageView imgEdit;
     private SessionManager sessionManager;
     private Menu action;
@@ -72,7 +72,7 @@ public class ProfileActivity extends AppCompatActivity{
             }
         });
         //get Image
-        String URL_IMAGE = "https://waholyproj.000webhostapp.com/files/profile_image/"+getID+".jpeg";
+        String URL_IMAGE = "http://192.168.100.126/mobile/profile_image/"+getID+".jpeg";
         new GetImage(profile_image).execute(URL_IMAGE);
         //Bottom Navigation
         BottomNavigationView bottomNavigationView = findViewById(R.id.profile);
@@ -83,6 +83,10 @@ public class ProfileActivity extends AppCompatActivity{
                 switch (item.getItemId()){
                     case  R.id.nav_home:
                         startActivity(new Intent(ProfileActivity.this,HomeActivity.class));
+                        overridePendingTransition(0,0);
+                        return true;
+                    case R.id.nav_Post:
+                        startActivity(new Intent(ProfileActivity.this,NewPostActivity.class));
                         overridePendingTransition(0,0);
                         return true;
                     case R.id.nav_person:
@@ -117,7 +121,6 @@ public class ProfileActivity extends AppCompatActivity{
         Tname = (TextView) findViewById(R.id.profile_name);
         Temail = (TextView) findViewById(R.id.profile_email);
         Tphone = (TextView) findViewById(R.id.profile_phone);
-        Tjob = (TextView) findViewById(R.id.profile_job);
         Taddress = (TextView) findViewById(R.id.profile_address);
         profile_image = (CircleImageView) findViewById(R.id.profile_image);
     }
@@ -135,13 +138,11 @@ public class ProfileActivity extends AppCompatActivity{
                                     JSONObject object = jsonArray.getJSONObject(i);
                                     String name = object.getString("name").trim();
                                     String email = object.getString("email").trim();
-                                    String job = object.getString("jobs").trim();
                                     String phone = object.getString("phone").trim();
                                     String address = object.getString("address").trim();
                                     Tname.setText(name);
                                     Temail.setText(email);
                                     Tphone.setText(phone);
-                                    Tjob.setText(job);
                                     Taddress.setText(address);
                                 }
                             }

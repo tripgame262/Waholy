@@ -40,7 +40,7 @@
             android:background="@drawable/edit"
             android:drawableLeft="@drawable/ic_person"
             android:drawablePadding="10dp"
-            android:hint="Fullname"
+            android:hint="Company"
             android:inputType="text"
             android:padding="15dp"
             android:textColorHint="#f75520"></EditText>

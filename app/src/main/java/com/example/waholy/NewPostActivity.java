@@ -1,9 +1,11 @@
 package com.example.waholy;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
@@ -20,6 +22,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -31,8 +34,8 @@ public class NewPostActivity extends AppCompatActivity {
     private Menu action;
     private SessionManager sessionManager;
     private String getID;
-    private EditText Etopic,Edetails;
-    private static String URL_NEWPOST = "https://waholyproj.000webhostapp.com/files/submitPost.php";
+    private EditText Etopic,Edetails,Ejob,Eamount;
+    private static String URL_NEWPOST = "http://192.168.100.126/mobile/submitPost.php";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,14 +47,59 @@ public class NewPostActivity extends AppCompatActivity {
         //getID
         HashMap<String,String> user = sessionManager.getUserDetail();
         getID = user.get(SessionManager.ID);
+        BottomNavigationView bottomNavigationView = findViewById(R.id.new_post);
+        bottomNavigationView.setSelectedItemId(R.id.nav_Post);
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch (item.getItemId()){
+                    case  R.id.nav_home:
+                        startActivity(new Intent(NewPostActivity.this,HomeActivity.class));
+                        overridePendingTransition(0,0);
+                        return true;
+                    case R.id.nav_Post:
+                        return true;
+                    case R.id.nav_person:
+                        startActivity(new Intent(NewPostActivity.this,ProfileActivity.class));
+                        overridePendingTransition(0,0);
+                        return true;
+                    case R.id.nav_logout:
+                        AlertDialog.Builder builder = new AlertDialog.Builder(NewPostActivity.this);
+                        builder.setTitle("Are you sure?");
+                        builder
+                                .setMessage("Are you sure to logout?")
+                                .setCancelable(false)
+                                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        sessionManager.logout();
+                                    }
+                                })
+                                .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        dialog.cancel();
+                                    }
+                                });
+                        AlertDialog alertDialog = builder.create();
+                        alertDialog.show();
+                        return true;
+                }
+                return false;
+            }
+        });
     }
     public void init(){
         Etopic = (EditText) findViewById(R.id.edit_topic);
         Edetails = (EditText) findViewById(R.id.edit_details);
+        Ejob = (EditText) findViewById(R.id.edit_job);
+        Eamount = (EditText) findViewById(R.id.edit_amount);
     }
     public void savePost(){
         final String topic = Etopic.getText().toString().trim();
         final String details = Edetails.getText().toString().trim();
+        final String job = Ejob.getText().toString().trim();
+        final String amount = Eamount.getText().toString().trim();
         StringRequest stringRequest = new StringRequest(Request.Method.POST, URL_NEWPOST,
                 new Response.Listener<String>() {
                     @Override
@@ -82,6 +130,8 @@ public class NewPostActivity extends AppCompatActivity {
                 Map<String,String> params = new HashMap<>();
                 params.put("topic",topic);
                 params.put("detail",details);
+                params.put("job",job);
+                params.put("amount",amount);
                 params.put("id",getID);
                 return params;
             }
@@ -95,6 +145,7 @@ public class NewPostActivity extends AppCompatActivity {
         menuInflater.inflate(R.menu.action_menu,menu);
         action = menu;
         action.findItem(R.id.newpost).setVisible(false);
+        action.findItem(R.id.search_tag).setVisible(false);
         return true;
     }
     @Override

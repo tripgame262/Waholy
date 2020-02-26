@@ -6,9 +6,9 @@
     android:icon="@drawable/ic_home"
     android:title="Home"/>
 <item
-    android:id="@+id/nav_messenger"
-    android:icon="@drawable/ic_message"
-    android:title="Messenger"/>
+    android:id="@+id/nav_fav"
+    android:icon="@drawable/ic_favorite"
+    android:title="Favorite"/>
 <item
     android:id="@+id/nav_Post"
     android:background="@color/colorMain"

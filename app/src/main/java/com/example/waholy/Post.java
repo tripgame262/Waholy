@@ -5,15 +5,25 @@ public class Post {
     private String name;
     private String details;
     private String job;
+    private String amount;
 
     public Post() {
     }
 
-    public Post(String topic, String name, String details, String job) {
+    public Post(String topic, String name, String details, String job,String amount) {
         this.topic = topic;
         this.name = name;
         this.details = details;
         this.job = job;
+        this.amount = amount;
+    }
+
+    public void setAmount(String amount) {
+        this.amount = amount;
+    }
+
+    public String getAmount() {
+        return amount;
     }
 
     public String getTopic() {

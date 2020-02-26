@@ -3,6 +3,7 @@ package com.example.waholy;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.view.MenuItemCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -19,6 +20,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.SearchView;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -46,20 +48,18 @@ public class HomeActivity extends AppCompatActivity {
     private SessionManager sessionManager;
     private List<Post> lstView = new ArrayList<>();
     private RecyclerView listView ;
-    private Menu action;
-    private static String URL_POST = "https://waholyproj.000webhostapp.com/files/getPost.php";
-    private static String URL_SEARCH = "https://waholyproj.000webhostapp.com/files/search.php";
     private RvAdapter rvAdapter;
+    private Menu action;
+    private static String URL_POST = "http://192.168.100.126/mobile/getPost.php";
+    private static String URL_SEARCH = "http://192.168.100.126/mobile/search.php";
     EditText Esearch;
+    Button btn_detail;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
         sessionManager = new SessionManager(this);
-        sessionManager.checkLogin();
         listView = (RecyclerView) findViewById(R.id.listPost);
-        //search
-        Esearch = findViewById(R.id.edit_search);
         //getPost
         getAllPost();
         //bottom
@@ -70,6 +70,10 @@ public class HomeActivity extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()){
                     case  R.id.nav_home:
+                        return true;
+                    case R.id.nav_Post:
+                        startActivity(new Intent(HomeActivity.this,NewPostActivity.class));
+                        overridePendingTransition(0,0);
                         return true;
                     case R.id.nav_person:
                         startActivity(new Intent(HomeActivity.this,ProfileActivity.class));
@@ -119,6 +123,7 @@ public class HomeActivity extends AppCompatActivity {
                                     post.setTopic(object.getString("topic"));
                                     post.setJob(object.getString("job"));
                                     post.setName(object.getString("name"));
+                                    post.setAmount(object.getString("amount"));
                                     lstView.add(post);
                                     Toast.makeText(HomeActivity.this, "Test", Toast.LENGTH_SHORT).show();
                                 }
@@ -153,7 +158,6 @@ public class HomeActivity extends AppCompatActivity {
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-
                         try {
                             JSONObject jsonObject = new JSONObject(response);
                             JSONArray jsonArray = jsonObject.getJSONArray("post");
@@ -164,6 +168,8 @@ public class HomeActivity extends AppCompatActivity {
                                 post.setTopic(object.getString("topic"));
                                 post.setJob(object.getString("job"));
                                 post.setName(object.getString("name"));
+                                post.setAmount(object.getString("amount"));
+                                post.setDetails(object.getString("details"));
                                 lstView.add(post);
                             }
                         } catch (JSONException e) {
@@ -185,29 +191,34 @@ public class HomeActivity extends AppCompatActivity {
     }
 
     private void setRvadapter(List<Post> lstView) {
-        RvAdapter myAdapter = new RvAdapter(this,lstView) ;
+        rvAdapter = new RvAdapter(this,lstView) ;
         listView.setLayoutManager(new LinearLayoutManager(this));
-        listView.setAdapter(myAdapter);
+        listView.setAdapter(rvAdapter);
     }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater menuInflater = getMenuInflater();
         menuInflater.inflate(R.menu.action_menu,menu);
         action = menu;
+        action.findItem(R.id.newpost).setVisible(false);
         action.findItem(R.id.savepost).setVisible(false);
+        MenuItem item = menu.findItem(R.id.search_tag);
+        SearchView searchView = (SearchView) MenuItemCompat.getActionView(item);
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                rvAdapter.getFilter().filter(query);
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                rvAdapter.getFilter().filter(newText);
+                return false;
+            }
+        });
+
         return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        switch (item.getItemId()){
-            case R.id.newpost:
-                Intent intent = new Intent(HomeActivity.this,NewPostActivity.class);
-                startActivity(intent);
-                return true;
-            default:
-                return super.onOptionsItemSelected(item);
-
-        }
     }
 }

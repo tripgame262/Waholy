@@ -47,10 +47,10 @@ import java.util.Map;
 import de.hdodenhof.circleimageview.CircleImageView;
 
 public class EditProfileActivity extends AppCompatActivity{
-    private static String URL_READ = "https://waholyproj.000webhostapp.com/files/read_detail.php";
-    private static String URL_EDIT = "https://waholyproj.000webhostapp.com/files/edit_detail.php";
-    private static String URL_UPLOAD = "https://waholyproj.000webhostapp.com/files/upload.php";
-    private EditText Ename,Ephone,Eemail,Ejob,Eaddress;
+    private static String URL_READ = "http://192.168.100.126/mobile/read_detail.php";
+    private static String URL_EDIT = "http://192.168.100.126/mobile/edit_detail.php";
+    private static String URL_UPLOAD = "http://192.168.100.126/mobile/upload.php";
+    private EditText Ename,Ephone,Eemail,Eaddress;
     private ImageView imgEdit;
     private Button btnPhoto_upload;
     SessionManager sessionManager;
@@ -68,7 +68,7 @@ public class EditProfileActivity extends AppCompatActivity{
         HashMap<String,String> user = sessionManager.getUserDetail();
         getID = user.get(SessionManager.ID);
         //get immage
-        String URL_IMAGE = "https://waholyproj.000webhostapp.com/files/profile_image/"+getID+".jpeg";
+        String URL_IMAGE = "http://192.168.100.126/mobile/profile_image/"+getID+".jpeg";
         new GetImage(profile_image).execute(URL_IMAGE);
         //edit profile
         findViewById(R.id.profile_save).setOnClickListener(new View.OnClickListener() {
@@ -126,7 +126,6 @@ public class EditProfileActivity extends AppCompatActivity{
         Ename = (EditText) findViewById(R.id.edit_profile_name);
         Eemail = (EditText) findViewById(R.id.edit_profile_email);
         Ephone = (EditText) findViewById(R.id.edit_profile_phone);
-        Ejob = (EditText) findViewById(R.id.edit_profile_job);
         Eaddress = (EditText) findViewById(R.id.edit_profile_address);
         profile_image = (CircleImageView) findViewById(R.id.profile_image);
     }
@@ -144,13 +143,11 @@ public class EditProfileActivity extends AppCompatActivity{
                                     JSONObject object = jsonArray.getJSONObject(i);
                                     String name = object.getString("name").trim();
                                     String email = object.getString("email").trim();
-                                    String job = object.getString("jobs").trim();
                                     String phone = object.getString("phone").trim();
                                     String address = object.getString("address").trim();
                                     Ename.setText(name);
                                     Eemail.setText(email);
                                     Ephone.setText(phone);
-                                    Ejob.setText(job);
                                     Eaddress.setText(address);
                                 }
                             }
@@ -188,7 +185,6 @@ public class EditProfileActivity extends AppCompatActivity{
         final String email = Eemail.getText().toString().trim();
         final String phone = Ephone.getText().toString().trim();
         final String address = Eaddress.getText().toString().trim();
-        final String job = Ejob.getText().toString().trim();
         final String id = getID;
 
         StringRequest stringRequest = new StringRequest(Request.Method.POST, URL_EDIT,
@@ -226,7 +222,6 @@ public class EditProfileActivity extends AppCompatActivity{
                 params.put("email",email);
                 params.put("phone",phone);
                 params.put("address",address);
-                params.put("jobs",job);
                 return params;
             }
         };
