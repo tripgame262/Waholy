@@ -35,7 +35,7 @@ public class NewPostActivity extends AppCompatActivity {
     private SessionManager sessionManager;
     private String getID;
     private EditText Etopic,Edetails,Ejob,Eamount;
-    private static String URL_NEWPOST = "http://192.168.100.126/mobile/submitPost.php";
+    private static String URL_NEWPOST = "http://10.51.94.183/mobile/submitPost.php";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

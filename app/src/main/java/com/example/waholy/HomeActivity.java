@@ -50,8 +50,8 @@ public class HomeActivity extends AppCompatActivity {
     private RecyclerView listView ;
     private RvAdapter rvAdapter;
     private Menu action;
-    private static String URL_POST = "http://192.168.100.126/mobile/getPost.php";
-    private static String URL_SEARCH = "http://192.168.100.126/mobile/search.php";
+    private static String URL_POST = "http://10.51.94.183/mobile/getPost.php";
+    private static String URL_SEARCH = "http://10.51.94.183/mobile/search.php";
     EditText Esearch;
     Button btn_detail;
     @Override

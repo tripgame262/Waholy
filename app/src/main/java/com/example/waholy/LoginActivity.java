@@ -28,7 +28,7 @@ import java.util.Map;
 
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
     EditText editTextEmail,editTextPass;
-    private static String URL_LOGIN = "http://192.168.100.126/mobile/login.php";
+    private static String URL_LOGIN = "http://10.51.94.183/mobile/login.php";
     SessionManager sessionManager;
     @Override
     protected void onCreate(Bundle savedInstanceState) {

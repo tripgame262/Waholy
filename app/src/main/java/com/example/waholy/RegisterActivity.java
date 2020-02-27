@@ -25,7 +25,7 @@ import java.util.Map;
 public class RegisterActivity extends AppCompatActivity implements View.OnClickListener{
 
     EditText editTextEmail,editTextPass,editTextName,editTextPhone;
-    private static String URL_REGIST = "http://192.168.100.126/mobile/register.php";
+    private static String URL_REGIST = "http://10.51.94.183/mobile/register.php";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

@@ -44,7 +44,7 @@ import java.util.Map;
 import de.hdodenhof.circleimageview.CircleImageView;
 
 public class ProfileActivity extends AppCompatActivity{
-    private static String URL_READ = "http://192.168.100.126/mobile/read_detail.php";
+    private static String URL_READ = "http://10.51.94.183/mobile/read_detail.php";
     private TextView Tname,Tphone,Temail,Taddress;
     private ImageView imgEdit;
     private SessionManager sessionManager;
@@ -72,7 +72,7 @@ public class ProfileActivity extends AppCompatActivity{
             }
         });
         //get Image
-        String URL_IMAGE = "http://192.168.100.126/mobile/profile_image/"+getID+".jpeg";
+        String URL_IMAGE = "http://10.51.94.183/mobile/profile_image/"+getID+".jpeg";
         new GetImage(profile_image).execute(URL_IMAGE);
         //Bottom Navigation
         BottomNavigationView bottomNavigationView = findViewById(R.id.profile);

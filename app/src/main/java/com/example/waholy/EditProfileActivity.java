@@ -47,9 +47,9 @@ import java.util.Map;
 import de.hdodenhof.circleimageview.CircleImageView;
 
 public class EditProfileActivity extends AppCompatActivity{
-    private static String URL_READ = "http://192.168.100.126/mobile/read_detail.php";
-    private static String URL_EDIT = "http://192.168.100.126/mobile/edit_detail.php";
-    private static String URL_UPLOAD = "http://192.168.100.126/mobile/upload.php";
+    private static String URL_READ = "http://10.51.94.183/mobile/read_detail.php";
+    private static String URL_EDIT = "http://10.51.94.183/mobile/edit_detail.php";
+    private static String URL_UPLOAD = "http://10.51.94.183/mobile/upload.php";
     private EditText Ename,Ephone,Eemail,Eaddress;
     private ImageView imgEdit;
     private Button btnPhoto_upload;
@@ -68,7 +68,7 @@ public class EditProfileActivity extends AppCompatActivity{
         HashMap<String,String> user = sessionManager.getUserDetail();
         getID = user.get(SessionManager.ID);
         //get immage
-        String URL_IMAGE = "http://192.168.100.126/mobile/profile_image/"+getID+".jpeg";
+        String URL_IMAGE = "http://10.51.94.183/mobile/profile_image/"+getID+".jpeg";
         new GetImage(profile_image).execute(URL_IMAGE);
         //edit profile
         findViewById(R.id.profile_save).setOnClickListener(new View.OnClickListener() {
