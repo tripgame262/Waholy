@@ -106,53 +106,6 @@ public class HomeActivity extends AppCompatActivity {
         });
 
     }
-    public void search(){
-        final String search = Esearch.getText().toString().trim();
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, URL_SEARCH,
-                new Response.Listener<String>() {
-                    @Override
-                    public void onResponse(String response) {
-                        try {
-                            JSONObject jsonObject = new JSONObject(response);
-                            String success = jsonObject.getString("success");
-                            JSONArray jsonArray = jsonObject.getJSONArray("post");
-                            if(success.equals("1")){
-                                for(int i=0; i<jsonArray.length();i++){
-                                    JSONObject object = jsonArray.getJSONObject(i);
-                                    Post post = new Post();
-                                    post.setTopic(object.getString("topic"));
-                                    post.setJob(object.getString("job"));
-                                    post.setName(object.getString("name"));
-                                    post.setAmount(object.getString("amount"));
-                                    lstView.add(post);
-                                    Toast.makeText(HomeActivity.this, "Test", Toast.LENGTH_SHORT).show();
-                                }
-                            }
-                        } catch (JSONException e) {
-                            Toast.makeText(HomeActivity.this, "Error.."+e.toString(), Toast.LENGTH_SHORT).show();
-                            e.printStackTrace();
-                        }
-
-
-                    }
-                },
-                new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        Toast.makeText(HomeActivity.this, "Error.."+error.toString(), Toast.LENGTH_SHORT).show();
-                    }
-                })
-        {
-            @Override
-            protected Map<String, String> getParams() throws AuthFailureError {
-                HashMap<String,String> params = new HashMap<>();
-                params.put("search",search);
-                return params;
-            }
-        };
-        RequestQueue requestQueue = Volley.newRequestQueue(this);
-        requestQueue.add(stringRequest);
-    }
     public void getAllPost(){
         StringRequest stringRequest = new StringRequest(URL_POST,
                 new Response.Listener<String>() {

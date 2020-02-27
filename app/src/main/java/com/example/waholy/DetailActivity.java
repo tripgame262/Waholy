@@ -16,6 +16,7 @@ public class DetailActivity extends AppCompatActivity {
         init();
         ActionBar actionBar = getSupportActionBar();
         Intent i = getIntent();
+        mName.setText(getIntent().getStringExtra("iName"));
         mTopic.setText(getIntent().getStringExtra("iTopic"));
         mAmount.setText(getIntent().getStringExtra("iAmount"));
         mTag.setText(getIntent().getStringExtra("iTag"));
@@ -27,6 +28,7 @@ public class DetailActivity extends AppCompatActivity {
 
     }
     public void init(){
+        mName = (TextView) findViewById(R.id.dName);
         mTopic = (TextView) findViewById(R.id.dTopic);
         mAmount =(TextView) findViewById(R.id.dAmount);
         mTag =(TextView) findViewById(R.id.dTag);
